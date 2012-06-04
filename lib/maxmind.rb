@@ -1,8 +1,14 @@
 # require 'rubygems'
-require 'active_support'
+require 'active_support/all'
 require 'net/http'
 require 'net/https'
 require 'uri'
 require 'digest/md5'
-require File.join(File.dirname(__FILE__), 'maxmind/request')
-require File.join(File.dirname(__FILE__), 'maxmind/response')
+
+module Maxmind
+  VERSION = "0.4.0"
+  mattr_accessor :license_key
+  
+  autoload :Request,  'maxmind/request'
+  autoload :Response, 'maxmind/response'
+end

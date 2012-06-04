@@ -1,6 +1,4 @@
 module Maxmind
-  # Your license key
-  mattr_accessor :license_key
   
   class Request
     # optionally set a default request type (one of 'standard' or 'premium')
