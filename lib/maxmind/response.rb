@@ -14,6 +14,15 @@ module Maxmind
       raise ArgumentError, 'Missing response string' unless response
       @attributes = {}
       parse(response)
+      @attributes = attributes_from_response
+    end
+    
+    def attributes_from_response
+      hash_to_return = {}
+      self.instance_variables.map(&:to_s).each do |var|
+        hash_to_return[var.gsub("@","")] = self.instance_variable_get(var)
+      end
+      return hash_to_return
     end
 
     def parse(response)
